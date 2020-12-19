@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+I'll see @here tmr good night, by JagTheFriend, x)
+-->
+
+<html>
+
+<head>
+    <title>Griff Site - Countdown</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+
+<body>
+
+    <div class="bgimg">
+        <div class="main-content">
+
+        <div class="center">
+            <h1 id="countdown-message">Countdown to </h1>
+            <div id="countdown-container">
+                <h2 id="countdown"></h2>
+            </div>
+            <script>
+                function updateTime() {
+                    function pad(n, width, z) {
+                      z = z || '0';
+                      n = n + '';
+                      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+                    }
+
+                    const currentTime = new Date();
+                    const yearCountingDownTo = currentTime.getFullYear() + 1
+                    document.getElementById("countdown-message").innerText = `Counting down to ${yearCountingDownTo}`
+
+                    const nextYear = new Date(yearCountingDownTo, 0, 1, 0, 0, 0);
+                    let timeLeft = Math.abs(nextYear - currentTime); // Milliseconds
+
+                    daysLeft = Math.floor(timeLeft / (24 * 60 * 60 * 1000))
+                    timeLeft -= daysLeft * (24 * 60 * 60 * 1000)
+
+                    hoursLeft = Math.floor(timeLeft / (60 * 60 * 1000))
+                    timeLeft -= hoursLeft * (60 * 60 * 1000)
+
+                    minsLeft = Math.floor(timeLeft / (60 * 1000))
+                    timeLeft -= minsLeft * (60 * 1000)
+
+                    secondsLeft = Math.floor(timeLeft / 1000)
+
+                    document.getElementById("countdown").innerText = daysLeft + ' Days | ' + pad(hoursLeft, 2) + ':' + pad(minsLeft, 2) + ':' + pad(secondsLeft, 2)
+                }
+
+                setInterval(updateTime, 1000); // Every One Second
+            </script>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<style>
+    body,h1 {
+        font-family: "Raleway", sans-serif
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        color: whitesmoke;
+    }
+
+    .bgimg {
+        background-image: url("{{ image.url }}");
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .main-content {
+        background: rgba(25, 25, 25, 0.6); /* Green background with 30% opacity */
+        border-radius: 32px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 50vw;
+        min-height: 17vw;
+    }
+
+    .center {
+        text-align: center !important;
+    }
+
+    #countdown {
+        font-size: 5vw;
+        position: absolute;
+    }
+
+    #countdown-message {
+        font-size: 2.75vw;
+        margin-bottom: 0;
+    }
+
+    #countdown-container {
+        margin-left: 4.55vw;
+        margin-top: 0;
+        padding-top: 0;
+    }
+</style>

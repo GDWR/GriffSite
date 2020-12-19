@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Griff Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+
+<body>
+
+    <div class="bgimg">
+      <div class="main-content">
+
+        <div class="center">
+            <h1 id="wordOfTheDay">{{ word.word }}</h1>
+        </div>
+
+        <hr class="grey-border">
+        <p class="large center" id="definitionOfTheDay">{{ word.definitions[0].text }}</p>
+        <p class="medium center" id="noteOfTheDay">{{ word.note }}</p>
+      </div>
+
+    </div>
+
+</body>
+</html>
+
+<style>
+    body,h1 {
+        font-family: "Raleway", sans-serif
+    }
+
+    body, html {
+        height: 100%;
+        color: whitesmoke;
+        margin: 0;
+    }
+
+    .bgimg {
+        background-image: url("{{ image.url }}");
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .main-content {
+        background: rgba(25, 25, 25, 0.6); /* Green background with 30% opacity */
+        border-radius: 32px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .center {
+        text-align: center !important;
+    }
+
+    .grey-border {
+        border-color: #9e9e9e !important;
+        margin:auto;
+        width:40%
+    }
+
+    .large {
+        font-size: 18px !important;
+    }
+
+    .medium {
+        font-size: 15px !important;
+    }
+
+    #wordOfTheDay {
+        font-size: 4em;
+    }
+
+</style>
+
+
